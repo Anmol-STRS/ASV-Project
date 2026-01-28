@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# optional: quick test gate
+exit 0
