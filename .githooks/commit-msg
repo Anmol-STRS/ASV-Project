@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+msg_file="$1"
+subject="$(head -n1 "$msg_file")"
+
+# Example: feat(flutter): add vehicle mode toggle @anmol
+pattern='^(feat|fix|perf|refactor|test|docs|style|chore|build|ci|revert)(\([a-z0-9_-]+\))?: .+ @[a-z0-9_]+$'
+
+if ! [[ "$subject" =~ $pattern ]]; then
+  echo "❌ Invalid commit message."
+  echo "Use: type(scope): message @name"
+  echo "Example: feat(flutter): add vehicle mode toggle @anmol"
+  echo "Allowed types: feat fix perf refactor test docs style chore build ci revert"
+  exit 1
+fi

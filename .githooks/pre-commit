@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# optional: run formatter/lint
+exit 0
