@@ -19,7 +19,7 @@ from typing import Iterable, Dict
 REPO_STRUCTURE: Dict[str, str] = {
     # Top-level
     "README.md": "# ASV\n\nMonorepo scaffold.\n",
-    "LICENSE": "TODO: Add license text.\n",
+    "LICENSE": "TODO: rAdd license text.\n",
     ".env.example": "# Example env\n",
     ".editorconfig": "root = true\n\n[*]\nend_of_line = lf\ninsert_final_newline = true\ncharset = utf-8\n",
     ".gitignore": ".env\n.DS_Store\n__pycache__/\n*.pyc\nnode_modules/\nbuild/\ndist/\n.ml_data/\n",
