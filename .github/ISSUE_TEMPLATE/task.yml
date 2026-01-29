@@ -7,7 +7,7 @@ body:
     id: phase
     attributes:
       label: Phase
-      options: ["P0","P1","P2","P3","P4","P5","P6","P7","P8"]
+      options: ["Phase0","Phase1","Phase2","Phase3"]
     validations:
       required: true
   - type: dropdown
