@@ -1,0 +1,41 @@
+name: Task
+description: A single actionable engineering task
+title: "[P?][COMP] <short task name>"
+labels: ["type:feature", "prio:P2"]
+body:
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Phase
+      options: ["Phase0","Phase1","Phase2","Phase3"]
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options: ["vehicle","backend","flutter","ml","simulation","infra","docs"]
+    validations:
+      required: true
+  - type: dropdown
+    id: owner
+    attributes:
+      label: Owner
+      options: ["Anmol","Jaspinder","Chris","Prabh"]
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: What must be true for this to be “Done”
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / Links
+      placeholder: "Links to docs, schemas, related issues..."

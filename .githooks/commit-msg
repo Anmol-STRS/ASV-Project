@@ -1,16 +1,28 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-msg_file="$1"
+msg_file="${1:-}"
+if [[ -z "$msg_file" || ! -f "$msg_file" ]]; then
+  echo "❌ commit-msg: missing commit message file."
+  exit 1
+fi
+
 subject="$(head -n1 "$msg_file")"
 
-# Example: feat(flutter): add vehicle mode toggle @anmol
-pattern='^(feat|fix|perf|refactor|test|docs|style|chore|build|ci|revert)(\([a-z0-9_-]+\))?: .+ @[a-z0-9_]+$'
+# Allowed tags
+# Team: Anmol-STRS, jaspinder, Chris, Prabh
+# Format: type(scope): message @name
+pattern='^(feat|fix|perf|refactor|test|docs|style|chore|build|ci|revert)(\([a-z0-9_-]+\))?: .+ @(anmol|jas|chris|prabh)$'
 
 if ! [[ "$subject" =~ $pattern ]]; then
   echo "❌ Invalid commit message."
-  echo "Use: type(scope): message @name"
-  echo "Example: feat(flutter): add vehicle mode toggle @anmol"
+  echo
+  echo "Required: type(scope): message @name"
+  echo "Example:  feat(flutter-controls): add STOP confirmation @chris"
+  echo "Example:  fix(vehicle-safety): SAFE_STOP on comms loss @anmol"
+  echo
   echo "Allowed types: feat fix perf refactor test docs style chore build ci revert"
+  echo "Allowed tags:  @Anmol-STRS @jaspinder @Chris @Prabh"
+  echo "Scope:         lowercase letters/numbers/_/- only (optional)"
   exit 1
 fi
